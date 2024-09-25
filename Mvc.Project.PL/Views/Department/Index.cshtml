@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DepartmentViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["msg"] is not null)
+{
+    <div class=" w-25 alert alert-danger">
+        @TempData["msg"]
+    </div>
+}
+
+<h1 class="text-left text-light fs-1 fw-bolder">All Departments.</h1>
+<div class=" container  rounded-5 shadow-lg  pb-4 mt-2 mb-5 ">
+    @if (Model.Count() > 0)
+    {
+
+        <div class=" d-flex justify-content-between row pt-4  ">
+            <form asp-action="Index" class="d-flex col-md-3 ">
+                <input class=" form-control" type="text" id="SearchInputDep" name="SearchInputDep" placeholder="Department Name">
+                <button class="btn btn-success ms-2" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <div class=" d-flex justify-content-end col-md-3">
+                <a asp-controller="Department" asp-action="Create" class="btn btn-success "><i class="fa-solid fa-circle-plus me-1"></i>Add Department</a>
+            </div>
+        </div>
+
+        <div class=" Dep-Card row mt-2 g-3  ">
+
+            <partial name="PartialViews/DepartmentTablePartial" />
+
+        </div>
+
+    }
+    else
+    {
+        <div class="Drpartmrnt-Error text-center py-5  ">
+            <i class="fa-solid fa-triangle-exclamation text-danger mb-3 "></i>
+            <h2 class="text-light "> There Is No Department!</h2>
+            <a asp-controller="Department" asp-action="Create" class="btn btn-success mb-1 mt-5 ">Create New Department</a>
+        </div>
+    }
+</div>

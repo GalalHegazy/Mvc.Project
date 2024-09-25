@@ -1,0 +1,311 @@
+﻿@inject SignInManager<IdentityUser> signInManger
+@{
+    ViewBag.UserName = TempData["UserName"] as string;
+    TempData.Keep();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;900&family=Playfair+Display:wght@500&display=swap"
+          rel="stylesheet">
+    <title>Go</title>
+    <link href="~/Images/Icon.png" rel="icon">
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+
+<body>
+
+    <div class="background" id="home">
+        @* background *@
+        <div class="layout w-100 h-100 overflow-auto">
+            @*  layout *@
+
+            @* Start NavBar *@
+            <nav class="navbar navbar-dark pt-4  bg-transparent">
+                <div class="container ">
+
+
+
+                    <button class="navbar-toggler nav-btn " type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                        <span class="navbar-toggler-icon "></span>
+                    </button>
+
+                    <form class="d-flex w-50" role="search">
+                        <input class="form-control search-Home text-light rounded-4 bg-transparent" type="search" placeholder="Search here" aria-label="Search">
+
+                        @* <button class="btn btn-success" type="submit">Subscribe</button> *@
+                    </form>
+
+                    @*      <div class="d-flex justify-content-center align-items-center home-logo ">
+                    <a class="navbar-brand fw-lighter ms-1 fs-3 text-white" href="#"> Go.</a>
+                    </div> *@
+
+                    @if (signInManger.IsSignedIn(User))
+                    {
+                @*         <div class="dropdown d-flex justify-content-center  align-items-center ">
+                            <img src="~/Files/Images/user2.png" class="User-Img" alt="User" />
+                            <button class="btn text-white dropdown-toggle border-0 bg-transparent" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @ViewBag.UserName
+                            </button>
+                            <ul class="dropdown-menu">
+                                <a class="btn btn-danger w-100" asp-controller="Account" asp-action="LogOut">Log Out</a>
+                            </ul>
+                        </div> *@
+
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle mx-1" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw me-1"></i> @ViewBag.UserName </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#!">Settings</a></li>
+                                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" asp-controller="Account" asp-action="LogOut">Logout</a></li>
+                            </ul>
+                        </div>
+                    }
+
+
+                    <div class="offcanvas offcanvas-start text-bg-dark " tabindex="-1" id="offcanvasDarkNavbar"
+                         aria-labelledby="offcanvasDarkNavbarLabel">
+
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"></h5>
+                            <div class="d-flex justify-content-center align-items-center">
+                                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                                    <svg fill="#ffffff" viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <defs>
+                                                <style>
+                                                    .cls-1 {
+                                                        fill: none;
+                                                    }
+                                                   </style>
+                                            </defs><title>logo--slack</title><path d="M9.0423,19.1661A2.5212,2.5212,0,1,1,6.5212,16.645H9.0423Z"></path><path d="M10.3127,19.1661a2.5212,2.5212,0,0,1,5.0423,0v6.3127a2.5212,2.5212,0,1,1-5.0423,0Z"></path><path d="M12.8339,9.0423A2.5212,2.5212,0,1,1,15.355,6.5212V9.0423Z"></path><path d="M12.8339,10.3127a2.5212,2.5212,0,0,1,0,5.0423H6.5212a2.5212,2.5212,0,1,1,0-5.0423Z"></path><path d="M22.9577,12.8339a2.5212,2.5212,0,1,1,2.5211,2.5211H22.9577Z"></path><path d="M21.6873,12.8339a2.5212,2.5212,0,0,1-5.0423,0V6.5212a2.5212,2.5212,0,1,1,5.0423,0Z"></path><path d="M19.1661,22.9577a2.5212,2.5212,0,1,1-2.5211,2.5211V22.9577Z"></path><path d="M19.1661,21.6873a2.5212,2.5212,0,0,1,0-5.0423h6.3127a2.5212,2.5212,0,1,1,0,5.0423Z"></path><rect id="_Transparent_Rectangle_" data-name="<Transparent Rectangle>" class="cls-1" width="32" height="32"></rect>
+                                        </g>
+                                    </svg> Go.
+                                </a>
+                            </div>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                                    aria-label="Close"></button>
+                        </div>
+
+                        @* Start NavBar item *@
+                        <div class="d-flex flex-column justify-content-between h-100">
+
+                            <div class="offcanvas-body ">
+                                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                    <li class="nav-item">
+
+                                        <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                    </li>
+                                </ul>
+                                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="Department" asp-action="Index"><i class="fa-solid fa-sitemap me-1"></i>Department</a>
+                                    </li>
+                                </ul>
+                                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="Employee" asp-action="Index"><i class="fa-solid fa-users "></i> Employees</a>
+                                    </li>
+                                </ul>
+                                @if (signInManger.IsSignedIn(User) && User.IsInRole(AppPermissions.Admin))
+                                {
+                                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                        <li class="nav-item">
+                                            <a class="nav-link " asp-area="" asp-controller="Users" asp-action="Index"><i class="fa-solid fa-user "></i> Account</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                        <li class="nav-item">
+                                            <a class="nav-link " asp-area="" asp-controller="Roles" asp-action="Index"><i class="fa-solid fa-fingerprint"></i> Roles</a>
+                                        </li>
+                                    </ul>
+                                }
+
+                                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                    <li class="nav-item">
+
+                                        <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                            @* Start Footer *@
+                            <div class="footer  d-flex flex-column justify-content-center align-items-center ">
+
+                                <div class="cont-icon w-75 d-flex justify-content-evenly ">
+                                    <div class="cont-items d-flex justify-content-center align-items-center  rounded-circle fs-5 ">
+                                        <i class="fa-brands fa-facebook"></i>
+                                    </div>
+                                    <div class="cont-items d-flex justify-content-center align-items-center  rounded-circle fs-5 ">
+                                        <i class="fa-brands fa-twitter"></i>
+                                    </div>
+                                    <div class="cont-items d-flex justify-content-center align-items-center  rounded-circle fs-5 ">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </div>
+                                    <div class="cont-items d-flex justify-content-center align-items-center  rounded-circle fs-5 ">
+                                        <i class="fa-brands fa-linkedin"></i>
+                                    </div>
+                                </div>
+                                <p class="footer-text text-center">
+                                    Copyright 2024 Designed by HAGZR. All rights reserved
+                                </p>
+                            </div>
+                            @* End Footer *@
+
+                        </div>
+                        @* End NavBar item *@
+
+                    </div>
+                </div>
+            </nav>
+            @* End NavBar *@
+
+
+
+
+
+            @* Start Mine Body *@
+            <section class="container section ">
+
+
+
+                <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                @*       <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+                integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+                crossorigin="anonymous"></script> *@
+                @RenderBody()
+
+
+            </section>
+            @* End Mine Body *@
+
+
+        </div>
+    </div>
+
+
+    @*  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> *@
+
+
+    @*  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
+    @*  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>  *@
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @* @await RenderSectionAsync("Scripts", required: false)  *@
+    @RenderSection("validattionsScriptSection", required: false)
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* ----------------------------------------------------------------- *@
+
+@* <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Mvc.Project.PL</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Mvc.Project.PL</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - Mvc.Project.PL - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html> *@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

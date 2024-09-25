@@ -1,0 +1,87 @@
+﻿@model EmployeeViewModel
+@* @inject IDepartmentRepository _departmentRepository // DI View To Create obj From Class Department // //(Go To UnitOfWork) *@
+@inject IUintOfWork _uintOfWork
+@{
+    /* type: dynimic to SelectList */
+    // var Departments = new SelectList(await _uintOfWork.DepartmentRepository.GetAllAsync(), nameof(Department.Id), nameof(Department.Name));
+}
+
+<div class="col-md-6 p-4 ">
+
+    <div class=" d-flex justify-content-center align-items-center ">
+        <div class=" img-card w-50 d-flex justify-content-center align-items-center   ">
+            <img src="~/Files/Images/@Model.ImageName" class="img-product card-img-top w-50 my-4 rounded-circle">
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col-md-6">
+            <label asp-for="Name" class=" my-1 text-light fw-semibold"></label>
+            <input asp-for="Name" class="form-control" readonly />
+            <span asp-validation-for="Name" class="text-danger"></span> @* //for validtion  *@
+
+
+            <label asp-for="Age" class=" my-1 text-light fw-semibold"></label>
+            <input asp-for="Age" class="   form-control" readonly />
+
+
+        </div>
+        <div class="col-md-6">
+
+            <label asp-for="Email" class=" my-1 text-light fw-semibold"></label>
+            <input asp-for="Email" class="   form-control" readonly />
+            @* <span></span> //for validtion *@
+
+            <label asp-for="Gander" class=" my-1 text-light fw-semibold"></label>
+            <input asp-for="Gander" class="  form-control" readonly />
+         
+
+        </div>
+
+    </div>
+
+</div>
+<div class="col-md-6 p-4 ">
+
+    <div class="row  ">
+        <div class="col-md-6">
+         
+            <label asp-for="Address" class=" my-1 text-light fw-semibold"></label>
+            <input asp-for="Address" class="   form-control" readonly />
+            @* <span></span> //for validtion *@
+
+
+            <label asp-for="HiringDate" class="my-1 text-light fw-semibold"></label>
+            <input asp-for="HiringDate" class="form-control" readonly />
+            @* <span></span> //for validtion *@
+
+            <label asp-for="EmployeeType" class="my-1 text-light fw-semibold"></label>
+            <input asp-for="EmployeeType" class="form-control" readonly />
+
+            <label asp-for="IsActive" class=" text-light mt-3 fw-semibold  " readonly><span class="form-check-label "> IsActive  @Html.DisplayFor(E => E.IsActive)</span></label>
+
+
+
+        </div>
+        <div class="col-md-6">
+
+
+
+            <label asp-for="Salary" class="my-1 text-light fw-semibold"></label>
+            <input asp-for="Salary" class="form-control" readonly />
+            @* <span></span> //for validtion *@
+
+            <label class="my-1 text-light fw-semibold" asp-for="Department"></label>
+            <input asp-for="Department.Name" class="form-control" readonly />
+        </div>
+
+    </div>
+
+
+
+
+
+
+</div>
+
+

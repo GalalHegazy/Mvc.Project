@@ -1,0 +1,30 @@
+﻿@model DepartmentViewModel
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class="container section d-flex justify-content-center align-items-center">
+    <div class="col-md-7 rounded-4  shadow-lg  ">
+
+        <form asp-action="Update" class=" d-flex align-items-center justify-content-center py-5">
+            <div class=" form col-lg-6 d-flex flex-column p-4  rounded-5 Form-Depatemnt ">
+
+                <partial name="PartialViews/CreateUpdateDepPartial" />
+
+
+                <div class="d-flex align-items-center justify-content-center mt-4">
+                    <input type="submit" value="Save" class="btn btn-success me-3" />
+                    <a asp-controller="Department" asp-action="Index" class="btn btn-outline-light  ms-3 ">Cancel</a>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+</div>
+
+@section validattionsScriptSection {
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
