@@ -27,7 +27,7 @@ namespace Mvc.Project.PL
         {
 
             services.AddControllersWithViews() // Register Bulit-In-Services Requierd For Mvc
-                    .AddRazorRuntimeCompilation();  // To Enable Run Time Changes
+                    .AddRazorRuntimeCompilation();  // To Enable Run Time Changes 
 
             // Add (AppDbContext) and (DbContextOptions) to DI continer and (ConnectionString)
             services.AddDbContext<ApplicationDbContext>(options =>
