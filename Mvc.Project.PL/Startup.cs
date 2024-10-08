@@ -26,8 +26,8 @@ namespace Mvc.Project.PL
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllersWithViews(); // Register Bulit-In-Services Requierd by Mvc
-
+            services.AddControllersWithViews() // Register Bulit-In-Services Requierd For Mvc
+                    .AddRazorRuntimeCompilation();  // To Enable Run Time Changes
 
             // Add (AppDbContext) and (DbContextOptions) to DI continer and (ConnectionString)
             services.AddDbContext<ApplicationDbContext>(options =>
