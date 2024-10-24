@@ -84,8 +84,8 @@ namespace Mvc.Project.PL.Controllers
                             ModelState.AddModelError(string.Empty, "Your Account Is Not Confirmed Yet..");
 
                         if (result.Succeeded)
-                            TempData["UserName"]=user.UserName;
-                            TempData.Keep();
+                            //TempData["UserName"]=user.UserName;
+                            //TempData.Keep();
                             return RedirectToAction(nameof(HomeController.Index), "Home");
                     }
                 }
